@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript Date Picker: Using Diagonal Cell Split to Show Partial Free/Busy State</title>
+
+  <style>
+    p, body, td, input, select, button { font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; font-size: 14px; }
+    body { padding: 0px; margin: 0px; background-color: #ffffff; }
+    a { color: #1155a3; }
+    .space { margin: 10px 0px 10px 0px; }
+    .header { background: #003267; background: linear-gradient(to right, #011329 0%,#00639e 44%,#011329 100%); padding:20px 10px; color: white; box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75); }
+    .header a { color: white; }
+    .header h1 a { text-decoration: none; }
+    .header h1 { padding: 0px; margin: 0px; }
+    .main { padding: 10px; margin-top: 10px; }
+    .generated { color: #999; }
+    .generated a { color: #999; }
+  </style>
+
+  <style>
+    .navigator_default_cell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #93c47d;
+      pointer-events: none;
+      display: none;
+    }
+
+    .navigator_default_cell.start::before {
+      display: block;
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+
+    .navigator_default_cell.end::before {
+      display: block;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    .navigator_default_cell.full::before {
+      display: block;
+      clip-path: none;
+    }
+  </style>
+
+  <style>
+    .main table {
+      border-collapse: collapse;
+    }
+
+    .room-details {
+      font-size: 16px;
+
+      padding-left: 24px;
+      padding-right: 8px;
+      min-width: 260px;
+      vertical-align: top;
+    }
+
+    .room-details h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+    }
+
+    .room-subtitle {
+      margin: 0 0 12px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      font-size: 12px;
+      color: #555;
+      background: #fafafa;
+    }
+
+    .room-description {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    .room-highlights h4,
+    .room-availability-legend h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .room-highlights ul,
+    .room-availability-legend ul {
+      margin: 0 0 16px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: #444;
+    }
+
+    .room-highlights li,
+    .room-availability-legend li {
+      margin-bottom: 4px;
+    }
+
+  </style>
+
+</head>
+<body>
+<div class="header">
+  <h1><a href='https://code.daypilot.org/58690/javascript-date-picker-using-diagonal-cell-split'>JavaScript Date Picker: Using Diagonal Cell Split to Show Partial Free/Busy State</a></h1>
+  <div><a href="https://javascript.daypilot.org/">DayPilot for JavaScript</a> - HTML5 Calendar/Scheduling Components for JavaScript/Angular/React/Vue</div>
+</div>
+
+<div class="main">
+  <table>
+    <tr>
+      <td>
+        <div id="dp"></div>
+      </td>
+      <td class="room-details">
+        <h3>Room 101 Availability</h3>
+        <p class="room-subtitle">Deluxe Double Room · Non-smoking</p>
+
+        <div class="room-meta">
+          <span class="pill">2 guests</span>
+          <span class="pill">1 king bed</span>
+          <span class="pill">25 m²</span>
+        </div>
+
+        <p class="room-description">
+          Comfortable room with private bathroom, Wi-Fi, workspace, and air conditioning.
+          Use the calendar on the left to check free and partially occupied days.
+        </p>
+
+        <div class="room-highlights">
+          <h4>Highlights</h4>
+          <ul>
+            <li>Free Wi-Fi</li>
+            <li>Air conditioning</li>
+            <li>Desk and chair</li>
+            <li>Smart TV</li>
+          </ul>
+        </div>
+
+      </td>
+    </tr>
+  </table>
+
+  <div class="generated">Generated using <a href="https://builder.daypilot.org/">DayPilot UI Builder</a>.</div>
+</div>
+
+<script type="module" src="/src/app.js"></script>
+
+</body>
+</html>
